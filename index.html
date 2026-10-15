@@ -222,8 +222,8 @@ footer a{color:var(--gold)}
       <h1>The knots other treatments missed, <em>found and eased.</em></h1>
       <p class="hero-lede">One-on-one remedial, lymphatic and relaxation massage in a quiet garden studio. Every session is tailored to what your body needs that day, and all health funds are available.</p>
       <div class="hero-actions">
-        <a class="btn btn-call" href="tel:0403826535">Call to book</a>
-        <span class="phone-big">0403 826 535</span>
+        <a class="btn btn-call" href="sms:+61403826535?&amp;body=Hi%20Sam%2C%20I'd%20like%20to%20book%20a%20massage.%20">Text Sam to book</a>
+        <a class="btn btn-ghost" href="tel:+61403826535">Call 0403 826 535</a>
       </div>
       <div class="badges">
         <span><b>★ 5.0</b> from 74 Google reviews</span>
@@ -350,22 +350,22 @@ footer a{color:var(--gold)}
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Book a session</p>
-        <h2>Call or text Sam directly</h2>
+        <h2>Text or call Sam directly</h2>
         <p>Sam works alone, so if she's with a client she'll get back to you between sessions.</p>
       </div>
       <div class="book-grid">
         <div class="book-call">
           <span class="phone-big" id="phone">0403 826 535</span>
           <div class="copy-row">
-            <a class="btn btn-call" href="tel:0403826535">Call now</a>
-            <a class="btn btn-ghost" href="sms:0403826535">Send a text</a>
+            <a class="btn btn-call" href="sms:+61403826535?&amp;body=Hi%20Sam%2C%20I'd%20like%20to%20book%20a%20massage.%20">Text Sam to book</a>
+            <a class="btn btn-ghost" href="tel:+61403826535">Call now</a>
             <button class="btn btn-ghost" type="button" id="copyPhone">Copy number</button>
           </div>
           <p class="status" id="phoneStatus" role="status"></p>
         </div>
 
         <form class="builder" id="builder" aria-labelledby="builderTitle">
-          <h3 id="builderTitle">Write your booking text</h3>
+          <h3 id="builderTitle">Not sure what to say? Build your text</h3>
           <div class="field">
             <label for="treatment">Treatment</label>
             <select id="treatment">
@@ -399,7 +399,8 @@ footer a{color:var(--gold)}
           </div>
           <div class="preview" id="preview" aria-live="polite"></div>
           <div class="copy-row">
-            <button class="btn btn-call" type="submit">Copy message</button>
+            <a class="btn btn-call" id="smsLink" href="sms:+61403826535">Text this to Sam</a>
+            <button class="btn btn-ghost" type="submit">Copy instead</button>
           </div>
           <p class="status" id="msgStatus" role="status"></p>
         </form>
@@ -506,6 +507,7 @@ footer a{color:var(--gold)}
       ? "Hi Sam, it's "+name+". I'd like to book a massage but would love your advice on which treatment. I'm free "+when+". Thanks!"
       : "Hi Sam, it's "+name+". I'd like to book a "+t+", ideally "+when+". Thanks!";
     f('preview').textContent = body;
+    f('smsLink').href = 'sms:+61403826535?&body=' + encodeURIComponent(body);
     return body;
   }
   ['treatment','day','time','name'].forEach(id=>f(id).addEventListener('input',build));
